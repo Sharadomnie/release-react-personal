@@ -7,8 +7,16 @@ fruits.forEach((fruit, index) => {
 
 //MAP
 
-const upperCaseFruits = fruits.map((fruit) => {
-  fruit.slice(0, -1).toUpperCase(); // slice the last letter.
-});
+// const upperCaseFruits = fruits.map(
+//   (fruit) => {
+//     fruit.slice(0, -1).toUpperCase();
+//   }
+//   // slice the last letter.
+// );
 
+const upperCaseFruits = fruits.map(
+  (fruit) => fruit.slice(0, -1).toUpperCase()
+
+  // slice the last letter.
+);
 console.log(upperCaseFruits);
