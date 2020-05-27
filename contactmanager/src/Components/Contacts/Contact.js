@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 // import "./contact.css";
-import { Consumer } from "../Context";
+import { Consumer } from "../../Context";
 
 class Contact extends Component {
   // static propTypes = {
