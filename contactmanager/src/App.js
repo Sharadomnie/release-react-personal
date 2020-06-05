@@ -8,6 +8,7 @@ import AddContact from "./Components/Contacts/AddContact";
 import About from "./Components/Static/About";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NotFound from "./Components/Static/NotFound";
+import Test from "./Components/Test/Test";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <div className="container">
             <Switch>
               <Route exact path="/" component={Contacts} />
+              <Route exact path="/Test" component={Test} />
               <Route exact path="/Contact/AddContact" component={AddContact} />
               <Route path="/About/:version" component={About} />
               <Route component={NotFound}></Route>
