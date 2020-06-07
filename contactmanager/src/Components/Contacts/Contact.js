@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 // import "./contact.css";
 import { Consumer } from "../../Context";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 class Contact extends Component {
   // static propTypes = {
@@ -18,9 +20,15 @@ class Contact extends Component {
     this.setState({ isShowContact: !this.state.isShowContact });
   };
 
-  DeleteContact = (id, dispatch) => {
-    console.log(id);
-    dispatch({ type: "DELETE_CONTACT", payload: id });
+  DeleteContact = async (id, dispatch) => {
+    try {
+      await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
+      dispatch({ type: "DELETE_CONTACT", payload: id });
+    } catch (e) {
+      console.log(id);
+
+      dispatch({ type: "DELETE_CONTACT", payload: id });
+    }
   };
 
   static propTypes = {
@@ -40,10 +48,27 @@ class Contact extends Component {
               <h4>
                 {contact.name}
                 <i className="fas fa-sort-down" onClick={this.showContact}></i>
+
                 <i
-                  className="fas fa-trash ml-5"
+                  className="fas fa-trash"
+                  style={{
+                    cursor: "pointer",
+                    float: "right",
+                    marginRight: "16px",
+                  }}
                   onClick={this.DeleteContact.bind(this, contact.id, dispatch)}
                 ></i>
+                <Link to={`/Contact/EditContact/${contact.id}`}>
+                  <i
+                    className="fas fa-pencil-alt"
+                    style={{
+                      color: "black",
+                      cursor: "pointer",
+                      float: "right",
+                      marginRight: "16px",
+                    }}
+                  ></i>
+                </Link>
               </h4>
               {isShowContactInfo ? (
                 <ul className="list-group">
